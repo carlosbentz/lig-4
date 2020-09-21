@@ -1,0 +1,46 @@
+body {
+    text-align: center;
+}
+
+#game-board-container {
+    margin: 0 auto;
+    width: 400px;
+    height: 330px;
+    background:tomato ;
+}
+
+#board-columns-container {
+    display: flex;
+    margin: 0 auto;
+    width: 350px;
+    height: 310px;
+    background: aquamarine;
+}
+
+.board-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50px;
+    height: 310px;
+    margin: 0 .5px;
+    background: violet;
+}
+
+.board-column:hover {
+    background-color: blueviolet;
+    cursor: pointer;
+}
+
+.container-disco {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto; 
+    margin-top: 10px;
+    border-radius: 50%;
+    background: white; 
+}
+
+
+
+
