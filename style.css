@@ -1,20 +1,23 @@
 body {
     text-align: center;
+    box-sizing: border-box;
 }
 
 #game-board-container {
     margin    : 0 auto;
     width     : 400px;
-    height    : 330px;
+    height    : 380px;
     background: tomato;
 }
 
 #board-columns-container {
-    display   : flex;
-    margin    : 0 auto;
-    width     : 350px;
-    height    : 310px;
-    background: aquamarine;
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    margin         : 0 auto;
+    width          : 350px;
+    height         : 310px;
+    background     : aquamarine;
 }
 
 .board-column {
@@ -41,11 +44,31 @@ body {
     background   : white;
 }
 
+#cloud-disco-container {
+    display        : flex;
+    width          : 350px;
+    height         : 50px;
+    align-items    : center;
+    justify-content: space-around;
+    ;
+    background-color: aquamarine;
+    margin          : 0 auto;
+}
 
-#cloud {
-    width           : 100%;
-    height          : 40px;
-    background-color: tomato;
+.cloud-disco {
+    width        : 40px;
+    height       : 40px;
+    margin       : 0 auto;
+    border-radius: 50%;
+    background   : aquamarine;
+}
+
+.jogador1 .cloud-disco:hover {
+    background: black;
+}
+
+.jogador2 .cloud-disco:hover {
+    background: red;
 }
 
 #peçafixa {
