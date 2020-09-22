@@ -20,7 +20,7 @@ function createCloudDisco() {
     for (i = 0; i < 7; i++) {
         arrayCloudDisco[i] = document.createElement('div')
         containerCloudDisco.appendChild(arrayCloudDisco[i])
-        arrayCloudDisco[i].classList.add('cloud-disco', i)
+        arrayCloudDisco[i].classList.add('cloud-disco', i, 'preto')
     }
 }
 createCloudDisco()
@@ -49,19 +49,18 @@ function createLine() {
 }
 createLine()
 
-
+let disco
 arrayCloudDisco.forEach((elem) => {
+    
     elem.addEventListener('click', (event) => {
-        let disco = document.createElement('div')
-        disco.className = 'cloud-disco'
         escreveMap(elem.classList[1])
-        posicaoY.appendChild(disco)
     })
 })
 
 
 function escreveMap(coluna) {
     posicaoX = document.getElementById(coluna)
+<<<<<<< HEAD
     if (map[coluna][map[coluna].length - 1] === 0) {
         map[coluna][map[coluna].length - 1] = jogador
         posicaoY = posicaoX.lastChild.lastChild
@@ -85,8 +84,39 @@ function escreveMap(coluna) {
                         break;
                 }
             }
+=======
+    index = map[coluna].lastIndexOf(0)
+    if(index !== -1) {
+        switch (jogador) {
+            case 1:
+                map[coluna][index] += 1
+                posicaoY = posicaoX.children[index]
+                jogador = 2
+                disco = document.createElement('div')
+                disco.classList.add('jogador1')
+                posicaoY.appendChild(disco)
+                arrayCloudDisco.forEach(elem => {
+                    elem.classList.remove('preto')
+                    elem.classList.add('vermelho')
+                })
+                break;
+            case 2:
+                map[coluna][index] += 2
+                posicaoY = posicaoX.children[index]
+                jogador = 1
+                disco = document.createElement('div')
+                disco.classList.add('jogador2')
+                posicaoY.appendChild(disco)
+                arrayCloudDisco.forEach(elem => {
+                    elem.classList.remove('vermelho')
+                    elem.classList.add('preto')
+                })
+                break;
+            default:
+                break;
+>>>>>>> 259d9d72ffbd82e545e9298a3d6b1556c4acc388
         }
-    }
+    }    
 }
 
 

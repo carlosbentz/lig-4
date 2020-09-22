@@ -60,6 +60,7 @@ body {
     height       : 40px;
     margin       : 0 auto;
     border-radius: 50%;
+<<<<<<< HEAD
     background   : aquamarine;
 }
 
@@ -69,6 +70,33 @@ body {
 
 .jogador2 .cloud-disco:hover {
     background: red;
+=======
+    background: white; 
+}
+
+.preto:hover {
+    background: black;
+}
+
+.vermelho:hover {
+    background-color: red;
+}
+
+
+.jogador1  {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto; 
+    border-radius: 50%;
+    background: black; 
+}
+.jogador2 {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto; 
+    border-radius: 50%;
+    background: red; 
+>>>>>>> 259d9d72ffbd82e545e9298a3d6b1556c4acc388
 }
 
 #peçafixa {
