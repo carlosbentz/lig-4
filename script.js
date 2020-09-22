@@ -1,6 +1,17 @@
 const boardColumnsContainer = document.querySelector('#board-columns-container')
 const columns = []
 const containersDiscos = []
+let jogador = 1
+const map = [
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+]
+
 
 function createColumn() {
     for (let i = 0; i <= 6; i++) {
@@ -26,4 +37,33 @@ function createLine() {
 createLine()
 
 
+function escreveMap(coluna) {
+    if (map[coluna][map[coluna].length - 1] === 0) {
+        map[coluna][map[coluna].length - 1] = jogador
+        
+    } else {
+
+        for (let i = 0; i < map[coluna].length; i++) {
+            if (map[coluna][i] !== 0 && map[coluna][i] < 3 ) {
+
+                switch(jogador) {
+                    case 1: 
+                    map[coluna][i - 1] = 1;
+                        
+                        break;
+                    case 2: 
+                    map[coluna][i - 1] = 2;
+                        
+                        break;
+                }
+            }
+        }
+    }
+}
+
+escreveMap(0)
+escreveMap(1)
+escreveMap(0)
+escreveMap(0)
+console.log(map)
 
