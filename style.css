@@ -59,13 +59,30 @@ body {
     height: 40px;
     margin: 0 auto; 
     border-radius: 50%;
-    background: aquamarine; 
-}
-.jogador1 .cloud-disco:hover {
-    background: black; 
+    background: white; 
 }
 
-.jogador2 .cloud-disco:hover {
+.preto:hover {
+    background: black;
+}
+
+.vermelho:hover {
+    background-color: red;
+}
+
+
+.jogador1  {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto; 
+    border-radius: 50%;
+    background: black; 
+}
+.jogador2 {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto; 
+    border-radius: 50%;
     background: red; 
 }
 
