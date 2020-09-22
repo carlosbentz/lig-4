@@ -1,4 +1,5 @@
 const boardColumnsContainer = document.querySelector('#board-columns-container')
+const containerCloudDisco = document.querySelector('#cloud-disco-container')
 const columns = []
 const containersDiscos = []
 let jogador = 1
@@ -13,6 +14,16 @@ const map = [
     [0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0],
 ]
+
+let arrayCloudDisco = []
+function createCloudDisco() {
+    for(i=0; i < 7; i++) {
+        arrayCloudDisco[i] = document.createElement('div')
+        containerCloudDisco.appendChild(arrayCloudDisco[i])
+        arrayCloudDisco[i].classList.add('cloud-disco')
+    }
+}
+createCloudDisco()
 
 
 function createColumn() {
