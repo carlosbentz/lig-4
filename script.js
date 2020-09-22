@@ -64,7 +64,7 @@ function escreveMap(coluna) {
     posicaoX = document.getElementById(coluna)
     if (map[coluna][map[coluna].length - 1] === 0) {
         map[coluna][map[coluna].length - 1] = jogador
-        posicaoY = posicaoX.lastChild
+        posicaoY = posicaoX.lastChild.lastChild
         // console.log(posicaoY);
     } else {
 
