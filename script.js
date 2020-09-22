@@ -17,10 +17,10 @@ const map = [
 
 let arrayCloudDisco = []
 function createCloudDisco() {
-    for(i=0; i < 7; i++) {
+    for (i = 0; i < 7; i++) {
         arrayCloudDisco[i] = document.createElement('div')
         containerCloudDisco.appendChild(arrayCloudDisco[i])
-        arrayCloudDisco[i].classList.add('cloud-disco')
+        arrayCloudDisco[i].classList.add('cloud-disco', i)
     }
 }
 createCloudDisco()
@@ -50,24 +50,36 @@ function createLine() {
 createLine()
 
 
+arrayCloudDisco.forEach((elem) => {
+    elem.addEventListener('click', (event) => {
+        let disco = document.createElement('div')
+        disco.className = 'cloud-disco'
+        escreveMap(elem.classList[1])
+        posicaoY.appendChild(disco)
+    })
+})
+
+
 function escreveMap(coluna) {
     posicaoX = document.getElementById(coluna)
     if (map[coluna][map[coluna].length - 1] === 0) {
         map[coluna][map[coluna].length - 1] = jogador
         posicaoY = posicaoX.lastChild
+        // console.log(posicaoY);
     } else {
 
         for (let i = 0; i < map[coluna].length; i++) {
             if (map[coluna][i] !== 0 && map[coluna][i] < 3) {
-
                 switch (jogador) {
                     case 1:
                         map[coluna][i - 1] = 1;
                         posicaoY = posicaoX.children[i - 1]
+                        // console.log(posicaoY);
                         break;
                     case 2:
                         map[coluna][i - 1] = 2;
                         posicaoY = posicaoX.children[i - 1]
+                        // console.log(posicaoY);
                         break;
                     default:
                         break;
@@ -77,6 +89,7 @@ function escreveMap(coluna) {
     }
 }
 
-escreveMap(0)
+
+// escreveMap(0)
 console.log(map)
 
