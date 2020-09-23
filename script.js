@@ -2,11 +2,16 @@ const boardColumnsContainer = document.querySelector('#board-columns-container')
 const containerCloudDisco = document.querySelector('#cloud-disco-container')
 const columns = []
 const containersDiscos = []
+const gemSound = document.getElementById('gemSound')
 let jogador = 1
 let jogador1Pontos = 0
 let jogador2Pontos = 0
 let posicaoX
 let posicaoY
+let placar = {
+    player1: 0,
+    player2: 0
+}
 let map = [
     [0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0],
@@ -57,7 +62,7 @@ arrayCloudDisco.forEach((elem) => {
     elem.addEventListener('click', (event) => {
         escreveMap(elem.classList[1])
         if (jogador === 1 || jogador === 2) {
-
+            gemSound.play()
             checkWinnerHorizontally()
             checkWinnerVertically()
         }
@@ -115,6 +120,8 @@ function checkWinnerHorizontally() {
                     if (jogador1 === 4) {
                         console.log("player 1 venceu")
                         popupVitoria(1);
+                        placar["player1"]+= 1
+                        document.getElementById('placar1').innerHTML= placar.player1
                         jogador = 3
 
                     }
@@ -125,6 +132,8 @@ function checkWinnerHorizontally() {
                     if (jogador2 === 4) {
                         console.log("player 2 venceu")
                         popupVitoria(2);
+                        placar["player2"]+= 1
+                        document.getElementById('placar2').innerHTML= placar.player2
                         jogador = 3
 
                     }
@@ -147,6 +156,8 @@ function checkWinnerVertically() {
                     if (jogador1 === 4) {
                         console.log("player 1 venceu");
                         popupVitoria(1);
+                        placar["player1"]+= 1
+                        document.getElementById('placar1').innerHTML= placar.player1
                         jogador = 3
                     }
                 }
@@ -156,6 +167,8 @@ function checkWinnerVertically() {
                     if (jogador2 === 4) {
                         console.log("player 2 venceu");
                         popupVitoria(2);
+                        placar["player2"]+= 1
+                        document.getElementById('placar2').innerHTML= placar.player2
                         jogador = 3
                     }
 

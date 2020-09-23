@@ -7,17 +7,33 @@
     <title>Lig-4</title>
     <link rel="stylesheet" href="./reset.css">
     <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <h1>Lig-4</h1>
-    <div id="game-board-container">
-        <div id="cloud-disco-container"></div>
-        <div id="board-columns-container"></div>
+    <h1>Lig-4 Pirata</h1>
+    <div id="game">
+
+        <div id="placarPlayer1" class="placar">
+            <p class="name">jogador 1</p>
+            <span id="placar1" class="numplacar">0</span>
+        </div>
+        <div id="game-board-container">
+            <div id="cloud-disco-container"></div>
+            <div id="fundo">
+                <div id="board-columns-container"></div>
+            </div>
+        </div>
+        <div id="placarPlayer2" class="placar">
+            <p class="name">jogador 2</p>
+            <span id="placar2" class="numplacar">0</span>
+        </div>
     </div>
+    <button onclick="window.location.reload()" id="restart">Restart</button>
+
     <div id="popup" class="popup">
         <p id="mensagemDeVitoria">Jogador 1 venceu!</p>
-        <button onclick="reset()"> reiniciar</button>
+        <button onclick="reset()" id="reset"> Reiniciar</button>
     </div>
     <div id="inicialDisplay">
 
@@ -42,7 +58,11 @@
             Play
         </button>
     </div>
-    <script src="./script.js"></script>
+    <button id="mute"
+        onclick="document.getElementById('player').muted = !document.getElementById('player').muted">Mute</button>
+    <audio id="player" src="assets/Pirates-of-the-Caribbean-Hes-a-P.mp3" autoplay loop></audio>
+    <audio src="assets/gem.mp3" id="gemSound"></audio>
+    <script  src="./script.js"></script>
 </body>
 
 </html>

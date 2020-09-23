@@ -1,13 +1,59 @@
 body {
     text-align: center;
     box-sizing: border-box;
+    height: 100vh;
+    width: 100vw;
+    background-image: url(assets/barcopirata.jpg);
+    background-size: 100% 100%;
+    font-family: 'MedievalSharp', cursive;;
 }
-
+h1 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#mensagemDeVitoria {
+    font-size: 4rem;
+    color: wheat;
+}
+#game {
+    display: flex;
+    justify-content: space-around;
+}
 #game-board-container {
-    margin    : 0 auto;
+ 
     width     : 400px;
     height    : 380px;
-    background: tomato;
+    background-image: url(assets/madeira.jpg);
+    background-size: cover;
+    display: inline-block;
+}
+.name {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+.numplacar {
+    font-size: 2rem;
+}
+#restart {
+    font-family: 'MedievalSharp', cursive;
+    font-size: 1.3rem;
+    display: block;
+    margin:  auto;
+    margin-top: 10px;
+    width: 20%;
+    height: 45px;
+    background-image: url(assets/madeiraclara2.jpeg);
+    border: none;
+    box-shadow: 5px 10px rgba(15, 15, 10, 0.5);
+
+}
+.placar {
+    width: 20%;
+    height: 150px;
+    border: 2px solid black;
+    display: inline-block;
+    padding: 20px;
+    background-color:  rgba(15, 15, 10, 0.3);
 }
 
 #board-columns-container {
@@ -17,7 +63,7 @@ body {
     margin         : 0 auto;
     width          : 350px;
     height         : 310px;
-    background     : aquamarine;
+    /* background     : aquamarine; */
 }
 
 .board-column {
@@ -27,13 +73,10 @@ body {
     width         : 50px;
     height        : 310px;
     margin        : 0 .5px;
-    background    : violet;
+    
 }
 
-.board-column:hover {
-    background-color: blueviolet;
-    cursor          : pointer;
-}
+
 
 .container-disco {
     width        : 40px;
@@ -41,7 +84,14 @@ body {
     margin       : 0 auto;
     margin-top   : 10px;
     border-radius: 50%;
-    background   : white;
+    background-color: rgba(15, 15, 10, 0.6);
+}
+#fundo {
+    width: fit-content;
+    height: fit-content;
+    background-image: url(assets/madeiraclara2.jpeg);
+
+    margin: 0 auto;
 }
 
 #cloud-disco-container {
@@ -50,7 +100,7 @@ body {
     height          : 50px;
     align-items     : center;
     justify-content : space-around;
-    background-color: aquamarine;
+    background-image: url(assets/madeiraclara2.jpeg);
     margin          : 0 auto;
 }
 
@@ -59,7 +109,8 @@ body {
     height       : 40px;
     margin       : 0 auto;
     border-radius: 50%;
-    background   : aquamarine;
+    /* background   : aquamarine; */
+
 }
 
 .jogador1 .cloud-disco:hover {
@@ -68,15 +119,16 @@ body {
 
 .jogador2 .cloud-disco:hover {
     background: red;
-    background: white;
 }
 
 .preto:hover {
-    background: black;
+    background-image: url(assets/joiaazul.png);
+    background-size: cover;
 }
 
 .vermelho:hover {
-    background-color: red;
+    background-image: url(assets/joiavermelha.png);
+    background-size: cover;
 }
 
 
@@ -85,7 +137,8 @@ body {
     height       : 40px;
     margin       : 0 auto;
     border-radius: 50%;
-    background   : black;
+    background-image: url(assets/joiaazul.png);
+    background-size: cover;
 }
 
 .jogador2 {
@@ -93,7 +146,8 @@ body {
     height       : 40px;
     margin       : 0 auto;
     border-radius: 50%;
-    background   : red;
+    background-image: url(assets/joiavermelha.png);
+    background-size: cover;
 }
 
 #peçafixa {
@@ -105,16 +159,16 @@ body {
 
 .popup {
     position: fixed;
-    top: 0;
+    top: -200px;
     bottom: 0;
     left: 0;
     right: 0;
     margin: auto;
-    width: 60%;
+    width: 40%;
     height: 46%;
     padding: 15px;
     border: solid 2px black;
-    background-color: blue;
+    background-image: url(assets/madeiraclara.jpg);
     display: none;
     z-index: 1;
 }
@@ -207,4 +261,27 @@ body {
     text-transform:uppercase;
     font-weight:600;
     background:#fff;
+}
+#reset {
+    font-family: 'MedievalSharp', cursive;
+    font-size: 1.3rem;
+    width: 100px;
+    height: 35px;
+    margin-top: 40px;
+    background-image: url(assets/madeiraclara2.jpeg);
+    border: none;
+    box-shadow: 5px 10px rgba(15, 15, 10, 0.5);
+}
+
+#placarPlayer2 {
+    background-color:  rgba(255, 0, 0, 0.3);
+}
+
+#placarPlayer1 {
+    background-color: rgba(12, 59, 214, 0.3);
+}
+
+#mute{
+    margin-top: 30px;
+    align-self: left;
 }
