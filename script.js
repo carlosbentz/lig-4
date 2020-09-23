@@ -199,3 +199,10 @@ function reset() {
     jogador1 = 0
     jogador2 = 0
 }
+
+const button = document.querySelector('#playButton')
+button.addEventListener('click', event => document.querySelector('#inicialDisplay').style.display = 'none')
+
+function togglePopup() {
+    document.getElementById("popup-1").classList.toggle("active");
+}

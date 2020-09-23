@@ -19,6 +19,29 @@
         <p id="mensagemDeVitoria">Jogador 1 venceu!</p>
         <button onclick="reset()"> reiniciar</button>
     </div>
+    <div id="inicialDisplay">
+
+        <div class="popup1" id="popup-1">
+            <div class="overlay"></div>
+            <div class="content">
+                <div class="close-btn" onclick="togglePopup()">&times;</div>
+                <h1>
+                    Objetivo:
+                </h1>
+                <p>
+                    O objetivo do jogo é ir colocando as fichas,<br>
+                    até que o jogador consiga colocar 4 fichas em linha <br>
+                    (podendo ser na horizontal ou na vertical), e impedir <br>
+                    que o adversário consiga o mesmo.
+                </p>
+            </div>
+        </div>
+        <button id="button-rules" onclick="togglePopup()">?</button>
+        
+        <button id="playButton">
+            Play
+        </button>
+    </div>
     <script src="./script.js"></script>
 </body>
 
