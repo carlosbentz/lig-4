@@ -7,7 +7,7 @@ let jogador1Pontos = 0
 let jogador2Pontos = 0
 let posicaoX
 let posicaoY
-const map = [
+let map = [
     [0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0],
@@ -56,8 +56,11 @@ arrayCloudDisco.forEach((elem) => {
 
     elem.addEventListener('click', (event) => {
         escreveMap(elem.classList[1])
-        checkWinnerHorizontally()
-        checkWinnerVertically()
+        if (jogador === 1 || jogador === 2) {
+
+            checkWinnerHorizontally()
+            checkWinnerVertically()
+        }
     })
 })
 
@@ -108,14 +111,22 @@ function checkWinnerHorizontally() {
             if (map[i][j] > 0) {
                 if (map[i][j] === 1) {
                     jogador1++
+                    jogador2 = 0
                     if (jogador1 === 4) {
                         console.log("player 1 venceu")
+                        popupVitoria(1);
+                        jogador = 3
+
                     }
                 }
                 else {
                     jogador2++
+                    jogador1 = 0
                     if (jogador2 === 4) {
                         console.log("player 2 venceu")
+                        popupVitoria(2);
+                        jogador = 3
+
                     }
                 }
             }
@@ -132,14 +143,20 @@ function checkWinnerVertically() {
             if (map[j][i] > 0) {
                 if (map[j][i] === 1) {
                     jogador1++
+                    jogador2 = 0
                     if (jogador1 === 4) {
-                        console.log("player 1 venceu")
+                        console.log("player 1 venceu");
+                        popupVitoria(1);
+                        jogador = 3
                     }
                 }
                 else {
                     jogador2++
+                    jogador1 = 0
                     if (jogador2 === 4) {
-                        console.log("player 2 venceu")
+                        console.log("player 2 venceu");
+                        popupVitoria(2);
+                        jogador = 3
                     }
 
                 }
@@ -150,4 +167,35 @@ function checkWinnerVertically() {
             }
         }
     }
+}
+
+function popupVitoria(player) {
+    document.getElementById('mensagemDeVitoria').innerText = `jogador ${player} Venceu!`
+    document.getElementById('popup').style.display = 'block'
+
+}
+
+function reset() {
+    map = [
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+    ]
+
+    columns.forEach(element => {
+        for (let index = 0; index < 6; index++) {
+            let filho = element.children[index]
+            filho.innerText = ""
+
+
+        }
+    });
+    document.getElementById('popup').style.display = 'none'
+    jogador = 1
+    jogador1 = 0
+    jogador2 = 0
 }
