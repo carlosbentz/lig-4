@@ -45,12 +45,11 @@ body {
 }
 
 #cloud-disco-container {
-    display        : flex;
-    width          : 350px;
-    height         : 50px;
-    align-items    : center;
-    justify-content: space-around;
-    ;
+    display         : flex;
+    width           : 350px;
+    height          : 50px;
+    align-items     : center;
+    justify-content : space-around;
     background-color: aquamarine;
     margin          : 0 auto;
 }
@@ -60,7 +59,6 @@ body {
     height       : 40px;
     margin       : 0 auto;
     border-radius: 50%;
-<<<<<<< HEAD
     background   : aquamarine;
 }
 
@@ -70,8 +68,7 @@ body {
 
 .jogador2 .cloud-disco:hover {
     background: red;
-=======
-    background: white; 
+    background: white;
 }
 
 .preto:hover {
@@ -83,20 +80,20 @@ body {
 }
 
 
-.jogador1  {
-    width: 40px;
-    height: 40px;
-    margin: 0 auto; 
+.jogador1 {
+    width        : 40px;
+    height       : 40px;
+    margin       : 0 auto;
     border-radius: 50%;
-    background: black; 
+    background   : black;
 }
+
 .jogador2 {
-    width: 40px;
-    height: 40px;
-    margin: 0 auto; 
+    width        : 40px;
+    height       : 40px;
+    margin       : 0 auto;
     border-radius: 50%;
-    background: red; 
->>>>>>> 259d9d72ffbd82e545e9298a3d6b1556c4acc388
+    background   : red;
 }
 
 #peçafixa {
