@@ -2,6 +2,7 @@ const boardColumnsContainer = document.querySelector('#board-columns-container')
 const containerCloudDisco = document.querySelector('#cloud-disco-container')
 const columns = []
 const containersDiscos = []
+const gemSound = document.getElementById('gemSound')
 let jogador = 1
 let jogador1Pontos = 0
 let jogador2Pontos = 0
@@ -61,7 +62,7 @@ arrayCloudDisco.forEach((elem) => {
     elem.addEventListener('click', (event) => {
         escreveMap(elem.classList[1])
         if (jogador === 1 || jogador === 2) {
-
+            gemSound.play()
             checkWinnerHorizontally()
             checkWinnerVertically()
         }

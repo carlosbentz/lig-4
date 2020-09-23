@@ -35,8 +35,10 @@
         <p id="mensagemDeVitoria">Jogador 1 venceu!</p>
         <button onclick="reset()" id="reset"> Reiniciar</button>
     </div>
-    <button id="mute" onclick="document.getElementById('player').muted = !document.getElementById('player').muted">Mute</button>
+    <button id="mute"
+        onclick="document.getElementById('player').muted = !document.getElementById('player').muted">Mute</button>
     <audio id="player" src="assets/Pirates-of-the-Caribbean-Hes-a-P.mp3" autoplay loop></audio>
+    <audio src="assets/gem.mp3" id="gemSound"></audio>
     <script src="./script.js"></script>
 </body>
 
