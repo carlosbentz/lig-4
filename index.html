@@ -35,11 +35,34 @@
         <p id="mensagemDeVitoria">Jogador 1 venceu!</p>
         <button onclick="reset()" id="reset"> Reiniciar</button>
     </div>
+    <div id="inicialDisplay">
+
+        <div class="popup1" id="popup-1">
+            <div class="overlay"></div>
+            <div class="content">
+                <div class="close-btn" onclick="togglePopup()">&times;</div>
+                <h1>
+                    Objetivo:
+                </h1>
+                <p>
+                    O objetivo do jogo é ir colocando as fichas,<br>
+                    até que o jogador consiga colocar 4 fichas em linha <br>
+                    (podendo ser na horizontal ou na vertical), e impedir <br>
+                    que o adversário consiga o mesmo.
+                </p>
+            </div>
+        </div>
+        <button id="button-rules" onclick="togglePopup()">?</button>
+        
+        <button id="playButton">
+            Play
+        </button>
+    </div>
     <button id="mute"
         onclick="document.getElementById('player').muted = !document.getElementById('player').muted">Mute</button>
     <audio id="player" src="assets/Pirates-of-the-Caribbean-Hes-a-P.mp3" autoplay loop></audio>
     <audio src="assets/gem.mp3" id="gemSound"></audio>
-    <script src="./script.js"></script>
+    <script  src="./script.js"></script>
 </body>
 
 </html>
