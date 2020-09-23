@@ -3,6 +3,8 @@ const containerCloudDisco = document.querySelector('#cloud-disco-container')
 const columns = []
 const containersDiscos = []
 let jogador = 1
+let jogador1Pontos = 0
+let jogador2Pontos = 0
 let posicaoX
 let posicaoY
 const map = [
@@ -51,42 +53,19 @@ createLine()
 
 let disco
 arrayCloudDisco.forEach((elem) => {
-    
+
     elem.addEventListener('click', (event) => {
         escreveMap(elem.classList[1])
+        checkWinnerHorizontally()
+        checkWinnerVertically()
     })
 })
 
 
 function escreveMap(coluna) {
     posicaoX = document.getElementById(coluna)
-<<<<<<< HEAD
-    if (map[coluna][map[coluna].length - 1] === 0) {
-        map[coluna][map[coluna].length - 1] = jogador
-        posicaoY = posicaoX.lastChild.lastChild
-        // console.log(posicaoY);
-    } else {
-
-        for (let i = 0; i < map[coluna].length; i++) {
-            if (map[coluna][i] !== 0 && map[coluna][i] < 3) {
-                switch (jogador) {
-                    case 1:
-                        map[coluna][i - 1] = 1;
-                        posicaoY = posicaoX.children[i - 1]
-                        // console.log(posicaoY);
-                        break;
-                    case 2:
-                        map[coluna][i - 1] = 2;
-                        posicaoY = posicaoX.children[i - 1]
-                        // console.log(posicaoY);
-                        break;
-                    default:
-                        break;
-                }
-            }
-=======
     index = map[coluna].lastIndexOf(0)
-    if(index !== -1) {
+    if (index !== -1) {
         switch (jogador) {
             case 1:
                 map[coluna][index] += 1
@@ -114,12 +93,61 @@ function escreveMap(coluna) {
                 break;
             default:
                 break;
->>>>>>> 259d9d72ffbd82e545e9298a3d6b1556c4acc388
         }
-    }    
+    }
 }
 
 
 // escreveMap(0)
 console.log(map)
 
+
+function checkWinnerHorizontally() {
+    for (i = 0; i < 7; i++) {
+        for (j = 0; j < 7; j++) {
+            if (map[i][j] > 0) {
+                if (map[i][j] === 1) {
+                    jogador1++
+                    if (jogador1 === 4) {
+                        console.log("player 1 venceu")
+                    }
+                }
+                else {
+                    jogador2++
+                    if (jogador2 === 4) {
+                        console.log("player 2 venceu")
+                    }
+                }
+            }
+            else {
+                jogador1 = 0
+                jogador2 = 0
+            }
+        }
+    }
+}
+function checkWinnerVertically() {
+    for (i = 0; i < 7; i++) {
+        for (j = 0; j < 7; j++) {
+            if (map[j][i] > 0) {
+                if (map[j][i] === 1) {
+                    jogador1++
+                    if (jogador1 === 4) {
+                        console.log("player 1 venceu")
+                    }
+                }
+                else {
+                    jogador2++
+                    if (jogador2 === 4) {
+                        console.log("player 2 venceu")
+                    }
+
+                }
+            }
+            else {
+                jogador1 = 0
+                jogador2 = 0
+            }
+        }
+    }
+}
