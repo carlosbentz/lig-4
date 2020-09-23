@@ -4,62 +4,71 @@ body {
 }
 
 #game-board-container {
-    margin: 0 auto;
-    width: 400px;
-    height: 380px;
-    background:tomato ;
+    margin    : 0 auto;
+    width     : 400px;
+    height    : 380px;
+    background: tomato;
 }
 
 #board-columns-container {
-    display: flex;
+    display        : flex;
     justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    width: 350px;
-    height: 310px;
-    background: aquamarine;
+    align-items    : center;
+    margin         : 0 auto;
+    width          : 350px;
+    height         : 310px;
+    background     : aquamarine;
 }
 
 .board-column {
-    display: flex;
+    display       : flex;
     flex-direction: column;
-    align-items: center;
-    width: 50px;
-    height: 310px;
-    margin: 0 .5px;
-    background: violet;
+    align-items   : center;
+    width         : 50px;
+    height        : 310px;
+    margin        : 0 .5px;
+    background    : violet;
 }
 
 .board-column:hover {
     background-color: blueviolet;
-    cursor: pointer;
+    cursor          : pointer;
 }
 
 .container-disco {
-    width: 40px;
-    height: 40px;
-    margin: 0 auto; 
-    margin-top: 10px;
+    width        : 40px;
+    height       : 40px;
+    margin       : 0 auto;
+    margin-top   : 10px;
     border-radius: 50%;
-    background: white; 
+    background   : white;
 }
 
 #cloud-disco-container {
-    display: flex;
-    width: 350px;
-    height: 50px;
-    align-items: center;
-    justify-content: space-around;;
+    display         : flex;
+    width           : 350px;
+    height          : 50px;
+    align-items     : center;
+    justify-content : space-around;
     background-color: aquamarine;
-    margin: 0 auto;
+    margin          : 0 auto;
 }
 
 .cloud-disco {
-    width: 40px;
-    height: 40px;
-    margin: 0 auto; 
+    width        : 40px;
+    height       : 40px;
+    margin       : 0 auto;
     border-radius: 50%;
-    background: white; 
+    background   : aquamarine;
+}
+
+.jogador1 .cloud-disco:hover {
+    background: black;
+}
+
+.jogador2 .cloud-disco:hover {
+    background: red;
+    background: white;
 }
 
 .preto:hover {
@@ -71,19 +80,25 @@ body {
 }
 
 
-.jogador1  {
-    width: 40px;
-    height: 40px;
-    margin: 0 auto; 
+.jogador1 {
+    width        : 40px;
+    height       : 40px;
+    margin       : 0 auto;
     border-radius: 50%;
-    background: black; 
+    background   : black;
 }
+
 .jogador2 {
-    width: 40px;
-    height: 40px;
-    margin: 0 auto; 
+    width        : 40px;
+    height       : 40px;
+    margin       : 0 auto;
     border-radius: 50%;
-    background: red; 
+    background   : red;
 }
 
-
+#peçafixa {
+    height          : 40px;
+    width           : 40px;
+    background-color: black;
+    border-radius   : 50%;
+}
