@@ -11,10 +11,23 @@
 
 <body>
     <h1>Lig-4</h1>
-    <div id="game-board-container">
-        <div id="cloud-disco-container"></div>
-        <div id="board-columns-container"></div>
+    <div id="game">
+
+        <div id="placarPlayer1" class="placar">
+            <p class="name">jogador 1</p>
+            <span id="placar1" class="numplacar">0</span>
+        </div>
+        <div id="game-board-container">
+            <div id="cloud-disco-container"></div>
+            <div id="board-columns-container"></div>
+        </div>
+        <div id="placarPlayer2" class="placar">
+            <p class="name">jogador 2</p>
+            <span id="placar2" class="numplacar">0</span>
+        </div>
     </div>
+    <button onclick="window.location.reload()" id="restart">restart</button>
+
     <div id="popup" class="popup">
         <p id="mensagemDeVitoria">Jogador 1 venceu!</p>
         <button onclick="reset()"> reiniciar</button>

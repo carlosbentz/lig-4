@@ -1,13 +1,43 @@
 body {
     text-align: center;
     box-sizing: border-box;
+    height: 100vh;
+    width: 100vw;
 }
-
+h1 {
+    margin-bottom: 20px;
+}
+#game {
+    display: flex;
+    justify-content: space-around;
+}
 #game-board-container {
-    margin    : 0 auto;
+ 
     width     : 400px;
     height    : 380px;
     background: tomato;
+    display: inline-block;
+}
+.name {
+    font-size: 2rem;
+}
+.numplacar {
+    font-size: 2rem;
+}
+#restart {
+    display: block;
+    margin:  auto;
+    margin-top: 10px;
+    width: 20%;
+    height: 45px;
+
+}
+.placar {
+    width: 20%;
+    height: 150px;
+    border: 2px solid black;
+    display: inline-block;
+    padding: 20px;
 }
 
 #board-columns-container {
