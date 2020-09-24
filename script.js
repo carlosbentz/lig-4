@@ -9,6 +9,7 @@ const boardColumnsContainer = document.querySelector('#board-columns-container')
 const containerCloudDisco = document.querySelector('#cloud-disco-container')
 const gemSound = document.getElementById('gemSound')
 
+
 //Declaração de variáveis serem ultilizadas
 const columns = []
 const containersDiscos = []
@@ -18,8 +19,10 @@ let disco
 let jogador = 1
 let posicaoX
 let posicaoY
+
 let jogador1 = 0
 let jogador2 = 0
+
 let placar = {
     player1: 0,
     player2: 0
@@ -88,7 +91,7 @@ function insertDisco() {
         })
     })
 }
-insertDisco()      
+insertDisco()
 
 
 // Função que insere a posição do disco no array Map e de troca o jogador 
@@ -166,21 +169,27 @@ function checkWinnerLeftDiagonal() {
     for (i = 0, j = 3; i < 4; i++, j--) {
         checkCell()
     }
+    zerarPontos()
     for (i = 0, j = 4; i < 5; i++, j--) {
         checkCell()
     }
+    zerarPontos()
     for (i = 0, j = 5; i < 6; i++, j--) {
         checkCell()
     }
+    zerarPontos()
     for (i = 1, j = 5; i < 7; i++, j--) {
         checkCell()
     }
+    zerarPontos()
     for (i = 2, j = 5; i < 7; i++, j--) {
         checkCell()
     }
+    zerarPontos()
     for (i = 3, j = 5; i < 7; i++, j--) {
         checkCell()
     }
+    zerarPontos()
 }
 
 
@@ -188,21 +197,28 @@ function checkWinnerRightDiagonal() {
     for (i = 6, j = 3; j > 0; i--, j--) {
         checkCell()
     }
+    zerarPontos()
     for (i = 6, j = 4; j > 0; i--, j--) {
         checkCell()
     }
+    zerarPontos()
     for (i = 6, j = 5; j > 0; i--, j--) {
         checkCell()
     }
+    zerarPontos()
     for (i = 5, j = 5; j > 0; i--, j--) {
         checkCell()
     }
+    zerarPontos()
     for (i = 4, j = 5; j > 0; i--, j--) {
         checkCell()
     }
-    for (i = 3, j = 5; j > 0; i--, j--) {
+    zerarPontos()
+    for (i = 3, j = 5; j > 1; i--, j--) {
         checkCell()
     }
+    zerarPontos()
+
 }
 
 
@@ -243,6 +259,15 @@ function checkCell() {
         jogador2 = 0
     }
 }
+
+function zerarPontos() {
+    jogador1 = 0
+    jogador2 = 0
+}
+
+
+
+
 
 // Função que mostra tela de vitória
 function popupVitoria(player) {
