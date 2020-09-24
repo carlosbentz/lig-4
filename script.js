@@ -1,12 +1,20 @@
+// Full screen para android
 if (navigator.userAgent.match(/Android/i)) {
     window.scrollTo(0, 1);
 }
 
+
+// Seleção dos elementos #board-columns-container' #cloud-disco-container e #gemSound  para manipulação via Dom
 const boardColumnsContainer = document.querySelector('#board-columns-container')
 const containerCloudDisco = document.querySelector('#cloud-disco-container')
+const gemSound = document.getElementById('gemSound')
+
+//Declaração de variáveis serem ultilizadas
 const columns = []
 const containersDiscos = []
-const gemSound = document.getElementById('gemSound')
+
+//
+let disco
 let jogador = 1
 let posicaoX
 let posicaoY
@@ -16,6 +24,8 @@ let placar = {
     player1: 0,
     player2: 0
 }
+
+//Array que é ultilizado para mapear a colocação das peças e as condições de vítoria  
 let map = [
     [0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0],
@@ -26,6 +36,7 @@ let map = [
     [0, 0, 0, 0, 0, 0],
 ]
 
+//Função que cria divs de entrada de disco e insere no containerCloudDisco
 let arrayCloudDisco = []
 function createCloudDisco() {
     for (i = 0; i < 7; i++) {
@@ -36,7 +47,7 @@ function createCloudDisco() {
 }
 createCloudDisco()
 
-
+//Função que cria as colunas com os containers de disco 
 function createColumn() {
     for (let i = 0; i <= 6; i++) {
         columns[i] = document.createElement('div')
@@ -45,6 +56,7 @@ function createColumn() {
 }
 createColumn()
 
+//função que insere classe e id numericos as colunas e cria e insere os containers de disco 
 function createLine() {
     columns.forEach((column, ind) => {
         column.classList.add('board-column')
@@ -60,22 +72,26 @@ function createLine() {
 }
 createLine()
 
-let disco
-arrayCloudDisco.forEach((elem) => {
 
-    elem.addEventListener('click', (event) => {
-        escreveMap(elem.classList[1])
-        if (jogador === 1 || jogador === 2) {
-            gemSound.play()
-            checkWinnerHorizontally()
-            checkWinnerVertically()
-            checkWinnerLeftDiagonal()
-            checkWinnerRightDiagonal()
-            //Chama as condições de vitória pra cada vez que algum jogador clicar
-        }
+//Função que insere disco na coluna
+function insertDisco() {
+    arrayCloudDisco.forEach((elem) => {
+        elem.addEventListener('click', (event) => {
+            escreveMap(elem.classList[1])
+            if (jogador === 1 || jogador === 2) {
+                gemSound.play()
+                checkWinnerHorizontally()
+                checkWinnerVertically()
+                checkWinnerLeftDiagonal()
+                checkWinnerRightDiagonal()
+            }
+        })
     })
-})
+}
+insertDisco()      
 
+
+// Função que insere a posição do disco no array Map e de troca o jogador 
 function escreveMap(coluna) {
     posicaoX = document.getElementById(coluna)
     index = map[coluna].lastIndexOf(0)
@@ -111,38 +127,41 @@ function escreveMap(coluna) {
     }
 }
 
-// escreveMap(0)
-console.log(map)
 
+
+//Condição simples, vai selecionando horizontalmente as células, e o checkCell() vai analisando cada uma
 function checkWinnerHorizontally() {
-    //Condição simples, vai selecionando horizontalmente as células, e o checkCell() vai analisando cada uma
     for (i = 0; i < 7; i++) {
         for (j = 0; j < 7; j++) {
             checkCell()
         }
     }
 }
+
+
+//Condição simples, vai selecionando verticalmente as células, e o checkCell() vai analisando cada uma
 function checkWinnerVertically() {
-    //Condição simples, vai selecionando verticalmente as células, e o checkCell() vai analisando cada uma
     for (j = 0; j < 7; j++) {
         for (i = 0; i < 7; i++) {
             checkCell()
         }
     }
 }
+
+
+//Aqui eu não consegui encontrar outra meneira de fazer, provavelmente tem uma solução muito mais simples, existe um padrão nas diagonais
+//mas eu acabei fazendo a mão no teste de mesa
+//cada for representa uma diagonal, exemplo :
+// O O O O X
+// O O O X O
+// O O X O O 
+// O X O O O 
+// X O O O O
+//Cada for é como se fosse essa sequência de X
+// No For, I = Coluna, J = Linha, I+J = Célula
+//Ambas as diagonais foram feitas da mesma maneira, apenas invertendo os lados.
+//Nota-se que aqui contém apenas as sequências, a função checkCell que determina os pontos e se o jogador venceu
 function checkWinnerLeftDiagonal() {
-    //Aqui eu não consegui encontrar outra meneira de fazer, provavelmente tem uma solução muito mais simples, existe um padrão nas diagonais
-    //mas eu acabei fazendo a mão no teste de mesa
-    //cada for representa uma diagonal, exemplo :
-    // O O O O X
-    // O O O X O
-    // O O X O O 
-    // O X O O O 
-    // X O O O O
-    //Cada for é como se fosse essa sequência de X
-    // No For, I = Coluna, J = Linha, I+J = Célula
-    //Ambas as diagonais foram feitas da mesma maneira, apenas invertendo os lados.
-    //Nota-se que aqui contém apenas as sequências, a função checkCell que determina os pontos e se o jogador venceu
 
     for (i = 0, j = 3; i < 4; i++, j--) {
         checkCell()
@@ -163,6 +182,8 @@ function checkWinnerLeftDiagonal() {
         checkCell()
     }
 }
+
+
 function checkWinnerRightDiagonal() {
     for (i = 6, j = 3; j > 0; i--, j--) {
         checkCell()
@@ -183,12 +204,14 @@ function checkWinnerRightDiagonal() {
         checkCell()
     }
 }
+
+
+//Essa função vai checar cada célula selecionada pelo for, que fica dentro da função onde o checkcell foi chamado,
+//se a célula for maior que 0, e for igual a 1, entrará na linha no if da linha 169,do contrário na 180,
+//e aumentará o contador do determinado jogador em 1 e zerará o outro, caso o contador seja === 4, o determinado jogador vence,
+// caso o primeiro if seja falso, zerará o contador dos dois jogadores
+//  o motivo de ter criado essa função, é apenas de encurtar o código, do contrário teria de colocar em cada condição de vitória 
 function checkCell() {
-    //Essa função vai checar cada célula selecionada pelo for, que fica dentro da função onde o checkcell foi chamado,
-    //se a célula for maior que 0, e for igual a 1, entrará na linha no if da linha 169,do contrário na 180,
-    //e aumentará o contador do determinado jogador em 1 e zerará o outro, caso o contador seja === 4, o determinado jogador vence,
-    // caso o primeiro if seja falso, zerará o contador dos dois jogadores
-    //  o motivo de ter criado essa função, é apenas de encurtar o código, do contrário teria de colocar em cada condição de vitória 
     if (map[i][j] > 0) {
         if (map[i][j] === 1) {
             jogador1++
@@ -221,6 +244,7 @@ function checkCell() {
     }
 }
 
+// Função que mostra tela de vitória
 function popupVitoria(player) {
     document.getElementById('mensagemDeVitoria').innerText = `jogador ${player} Venceu!`
     document.getElementById('popup').style.display = 'block'
@@ -228,6 +252,7 @@ function popupVitoria(player) {
 
 }
 
+//Função que reinicia a partida
 function reset() {
     map = [
         [0, 0, 0, 0, 0, 0],
@@ -253,9 +278,13 @@ function reset() {
     jogador2 = 0
 }
 
+
+//Botão de inicio de partida
 const button = document.querySelector('#playButton')
 button.addEventListener('click', event => document.querySelector('#inicialDisplay').style.display = 'none')
 
+
+//Botão de regras
 function togglePopup() {
     document.getElementById("popup-1").classList.toggle("active");
 }
