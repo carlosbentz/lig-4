@@ -195,7 +195,7 @@ p{
     font-family: 'MedievalSharp', cursive;
     position: absolute;
     top: 80%;
-    left: 36%;
+    left: 45%;
     padding: 15px;
     font-size: 18px;
     border: 2px solid #222;
@@ -298,7 +298,7 @@ p{
 #titulo {
     position: fixed;
     top: 30%;
-    left: 24%;
+    left: 40%;
     color: wheat;
     font-size: 4rem;
 }
