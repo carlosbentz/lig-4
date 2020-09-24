@@ -2,9 +2,14 @@ const boardColumnsContainer = document.querySelector('#board-columns-container')
 const containerCloudDisco = document.querySelector('#cloud-disco-container')
 const columns = []
 const containersDiscos = []
+const gemSound = document.getElementById('gemSound')
 let jogador = 1
 let posicaoX
 let posicaoY
+let placar = {
+    player1: 0,
+    player2: 0
+}
 let map = [
     [0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0],
@@ -55,7 +60,7 @@ arrayCloudDisco.forEach((elem) => {
     elem.addEventListener('click', (event) => {
         escreveMap(elem.classList[1])
         if (jogador === 1 || jogador === 2) {
-
+            gemSound.play()
             checkWinnerHorizontally()
             checkWinnerVertically()
             checkWinnerLeftDiagonal()
@@ -116,7 +121,6 @@ function checkWinnerVertically() {
         }
     }
 }
-
 function checkWinnerLeftDiagonal() {
     for (i = 0, j = 3; i < 4; i++, j--) {
         checkCell()
@@ -137,7 +141,6 @@ function checkWinnerLeftDiagonal() {
         checkCell()
     }
 }
-
 function checkWinnerRightDiagonal() {
     for (i = 6, j = 3; j > 0; i--, j--) {
         checkCell()
@@ -158,7 +161,6 @@ function checkWinnerRightDiagonal() {
         checkCell()
     }
 }
-
 function checkCell() {
     if (map[i][j] > 0) {
         if (map[i][j] === 1) {
@@ -178,7 +180,6 @@ function checkCell() {
                 popupVitoria(2);
                 jogador = 3
             }
-
         }
     }
     else {
@@ -186,35 +187,6 @@ function checkCell() {
         jogador2 = 0
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 function popupVitoria(player) {
     document.getElementById('mensagemDeVitoria').innerText = `jogador ${player} Venceu!`
@@ -245,4 +217,11 @@ function reset() {
     jogador = 1
     jogador1 = 0
     jogador2 = 0
+}
+
+const button = document.querySelector('#playButton')
+button.addEventListener('click', event => document.querySelector('#inicialDisplay').style.display = 'none')
+
+function togglePopup() {
+    document.getElementById("popup-1").classList.toggle("active");
 }
