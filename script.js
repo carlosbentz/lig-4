@@ -1,6 +1,6 @@
-if(navigator.userAgent.match(/Android/i)){
-    window.scrollTo(0,1);
- }
+if (navigator.userAgent.match(/Android/i)) {
+    window.scrollTo(0, 1);
+}
 
 const boardColumnsContainer = document.querySelector('#board-columns-container')
 const containerCloudDisco = document.querySelector('#cloud-disco-container')
@@ -71,6 +71,7 @@ arrayCloudDisco.forEach((elem) => {
             checkWinnerVertically()
             checkWinnerLeftDiagonal()
             checkWinnerRightDiagonal()
+            //Chama as condições de vitória pra cada vez que algum jogador clicar
         }
     })
 })
@@ -114,6 +115,7 @@ function escreveMap(coluna) {
 console.log(map)
 
 function checkWinnerHorizontally() {
+    //Condição simples, vai selecionando horizontalmente as células, e o checkCell() vai analisando cada uma
     for (i = 0; i < 7; i++) {
         for (j = 0; j < 7; j++) {
             checkCell()
@@ -121,6 +123,7 @@ function checkWinnerHorizontally() {
     }
 }
 function checkWinnerVertically() {
+    //Condição simples, vai selecionando verticalmente as células, e o checkCell() vai analisando cada uma
     for (j = 0; j < 7; j++) {
         for (i = 0; i < 7; i++) {
             checkCell()
@@ -128,6 +131,19 @@ function checkWinnerVertically() {
     }
 }
 function checkWinnerLeftDiagonal() {
+    //Aqui eu não consegui encontrar outra meneira de fazer, provavelmente tem uma solução muito mais simples, existe um padrão nas diagonais
+    //mas eu acabei fazendo a mão no teste de mesa
+    //cada for representa uma diagonal, exemplo :
+    // O O O O X
+    // O O O X O
+    // O O X O O 
+    // O X O O O 
+    // X O O O O
+    //Cada for é como se fosse essa sequência de X
+    // No For, I = Coluna, J = Linha, I+J = Célula
+    //Ambas as diagonais foram feitas da mesma maneira, apenas invertendo os lados.
+    //Nota-se que aqui contém apenas as sequências, a função checkCell que determina os pontos e se o jogador venceu
+
     for (i = 0, j = 3; i < 4; i++, j--) {
         checkCell()
     }
@@ -177,7 +193,7 @@ function checkCell() {
                 console.log(jogador1)
                 popupVitoria(1);
                 placar["player1"] += 1
-                document.getElementById('placar1').innerHTML= placar.player1
+                document.getElementById('placar1').innerHTML = placar.player1
                 jogador = 3
             }
         }
@@ -189,7 +205,7 @@ function checkCell() {
                 console.log(jogador2)
                 popupVitoria(2);
                 placar["player2"] += 1
-                document.getElementById('placar2').innerHTML= placar.player2
+                document.getElementById('placar2').innerHTML = placar.player2
                 jogador = 3
             }
         }
@@ -203,7 +219,7 @@ function checkCell() {
 function popupVitoria(player) {
     document.getElementById('mensagemDeVitoria').innerText = `jogador ${player} Venceu!`
     document.getElementById('popup').style.display = 'block'
-    
+
 
 }
 
