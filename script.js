@@ -1,8 +1,12 @@
+// Seleção dos elementos #board-columns-container' #cloud-disco-container e #gemSound  para manipulação via Dom
 const boardColumnsContainer = document.querySelector('#board-columns-container')
 const containerCloudDisco = document.querySelector('#cloud-disco-container')
+const gemSound = document.getElementById('gemSound')
+
+//Declaração de variáveis serem ultilizadas
 const columns = []
 const containersDiscos = []
-const gemSound = document.getElementById('gemSound')
+let disco
 let jogador = 1
 let posicaoX
 let posicaoY
@@ -12,6 +16,8 @@ let placar = {
     player1: 0,
     player2: 0
 }
+
+//Array que é ultilizado para mapear a colocação das peças e as condições de vítoria  
 let map = [
     [0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0],
@@ -22,6 +28,7 @@ let map = [
     [0, 0, 0, 0, 0, 0],
 ]
 
+//Função que cria divs de entrada de disco e insere no containerCloudDisco
 let arrayCloudDisco = []
 function createCloudDisco() {
     for (i = 0; i < 7; i++) {
@@ -32,7 +39,7 @@ function createCloudDisco() {
 }
 createCloudDisco()
 
-
+//Função que cria as colunas com os containers de disco 
 function createColumn() {
     for (let i = 0; i <= 6; i++) {
         columns[i] = document.createElement('div')
@@ -41,6 +48,7 @@ function createColumn() {
 }
 createColumn()
 
+//função que insere classe e id numericos as colunas e cria e insere os containers de disco 
 function createLine() {
     columns.forEach((column, ind) => {
         column.classList.add('board-column')
@@ -56,21 +64,24 @@ function createLine() {
 }
 createLine()
 
-let disco
-arrayCloudDisco.forEach((elem) => {
-
-    elem.addEventListener('click', (event) => {
-        escreveMap(elem.classList[1])
-        if (jogador === 1 || jogador === 2) {
-            gemSound.play()
-            checkWinnerHorizontally()
-            checkWinnerVertically()
-            checkWinnerLeftDiagonal()
-            checkWinnerRightDiagonal()
-        }
+//Função que insere disco 
+function insertDisco() {
+    arrayCloudDisco.forEach((elem) => {
+        elem.addEventListener('click', (event) => {
+            escreveMap(elem.classList[1])
+            if (jogador === 1 || jogador === 2) {
+                gemSound.play()
+                checkWinnerHorizontally()
+                checkWinnerVertically()
+                checkWinnerLeftDiagonal()
+                checkWinnerRightDiagonal()
+            }
+        })
     })
-})
+}
+insertDisco()
 
+// Função que insere a posição do disco no array e de troca o jogador 
 function escreveMap(coluna) {
     posicaoX = document.getElementById(coluna)
     index = map[coluna].lastIndexOf(0)
@@ -106,8 +117,7 @@ function escreveMap(coluna) {
     }
 }
 
-// escreveMap(0)
-console.log(map)
+
 
 function checkWinnerHorizontally() {
     for (i = 0; i < 7; i++) {
@@ -116,6 +126,8 @@ function checkWinnerHorizontally() {
         }
     }
 }
+
+
 function checkWinnerVertically() {
     for (j = 0; j < 7; j++) {
         for (i = 0; i < 7; i++) {
@@ -123,6 +135,8 @@ function checkWinnerVertically() {
         }
     }
 }
+
+
 function checkWinnerLeftDiagonal() {
     for (i = 0, j = 3; i < 4; i++, j--) {
         checkCell()
@@ -143,6 +157,8 @@ function checkWinnerLeftDiagonal() {
         checkCell()
     }
 }
+
+
 function checkWinnerRightDiagonal() {
     for (i = 6, j = 3; j > 0; i--, j--) {
         checkCell()
@@ -163,6 +179,8 @@ function checkWinnerRightDiagonal() {
         checkCell()
     }
 }
+
+
 function checkCell() {
     if (map[i][j] > 0) {
         if (map[i][j] === 1) {
@@ -196,6 +214,7 @@ function checkCell() {
     }
 }
 
+// Função que mostra tela de vitória
 function popupVitoria(player) {
     document.getElementById('mensagemDeVitoria').innerText = `jogador ${player} Venceu!`
     document.getElementById('popup').style.display = 'block'
@@ -203,6 +222,8 @@ function popupVitoria(player) {
 
 }
 
+
+//Função que reinicia a partida
 function reset() {
     map = [
         [0, 0, 0, 0, 0, 0],
@@ -228,9 +249,13 @@ function reset() {
     jogador2 = 0
 }
 
+
+//Botão de inicio de partida
 const button = document.querySelector('#playButton')
 button.addEventListener('click', event => document.querySelector('#inicialDisplay').style.display = 'none')
 
+
+//Botão de regras
 function togglePopup() {
     document.getElementById("popup-1").classList.toggle("active");
 }
