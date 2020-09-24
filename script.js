@@ -169,6 +169,8 @@ function checkCell() {
             if (jogador1 === 4) {
                 console.log("player 1 venceu");
                 popupVitoria(1);
+                placar["player1"] += 1
+                document.getElementById('placar1').innerHTML= placar.player1
                 jogador = 3
             }
         }
@@ -178,6 +180,8 @@ function checkCell() {
             if (jogador2 === 4) {
                 console.log("player 2 venceu");
                 popupVitoria(2);
+                placar["player2"] += 1
+                document.getElementById('placar2').innerHTML= placar.player2
                 jogador = 3
             }
         }
@@ -191,6 +195,7 @@ function checkCell() {
 function popupVitoria(player) {
     document.getElementById('mensagemDeVitoria').innerText = `jogador ${player} Venceu!`
     document.getElementById('popup').style.display = 'block'
+    
 
 }
 
