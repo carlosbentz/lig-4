@@ -4,8 +4,6 @@ const columns = []
 const containersDiscos = []
 const gemSound = document.getElementById('gemSound')
 let jogador = 1
-let jogador1Pontos = 0
-let jogador2Pontos = 0
 let posicaoX
 let posicaoY
 let placar = {
@@ -65,10 +63,11 @@ arrayCloudDisco.forEach((elem) => {
             gemSound.play()
             checkWinnerHorizontally()
             checkWinnerVertically()
+            checkWinnerLeftDiagonal()
+            checkWinnerRightDiagonal()
         }
     })
 })
-
 
 function escreveMap(coluna) {
     posicaoX = document.getElementById(coluna)
@@ -105,80 +104,87 @@ function escreveMap(coluna) {
     }
 }
 
-
 // escreveMap(0)
 console.log(map)
-
 
 function checkWinnerHorizontally() {
     for (i = 0; i < 7; i++) {
         for (j = 0; j < 7; j++) {
-            if (map[i][j] > 0) {
-                if (map[i][j] === 1) {
-                    jogador1++
-                    jogador2 = 0
-                    if (jogador1 === 4) {
-                        console.log("player 1 venceu")
-                        popupVitoria(1);
-                        placar["player1"]+= 1
-                        document.getElementById('placar1').innerHTML= placar.player1
-                        jogador = 3
-
-                    }
-                }
-                else {
-                    jogador2++
-                    jogador1 = 0
-                    if (jogador2 === 4) {
-                        console.log("player 2 venceu")
-                        popupVitoria(2);
-                        placar["player2"]+= 1
-                        document.getElementById('placar2').innerHTML= placar.player2
-                        jogador = 3
-
-                    }
-                }
-            }
-            else {
-                jogador1 = 0
-                jogador2 = 0
-            }
+            checkCell()
         }
     }
 }
 function checkWinnerVertically() {
-    for (i = 0; i < 7; i++) {
-        for (j = 0; j < 7; j++) {
-            if (map[j][i] > 0) {
-                if (map[j][i] === 1) {
-                    jogador1++
-                    jogador2 = 0
-                    if (jogador1 === 4) {
-                        console.log("player 1 venceu");
-                        popupVitoria(1);
-                        placar["player1"]+= 1
-                        document.getElementById('placar1').innerHTML= placar.player1
-                        jogador = 3
-                    }
-                }
-                else {
-                    jogador2++
-                    jogador1 = 0
-                    if (jogador2 === 4) {
-                        console.log("player 2 venceu");
-                        popupVitoria(2);
-                        placar["player2"]+= 1
-                        document.getElementById('placar2').innerHTML= placar.player2
-                        jogador = 3
-                    }
-
-                }
-            }
-            else {
-                jogador1 = 0
-                jogador2 = 0
+    for (j = 0; j < 7; j++) {
+        for (i = 0; i < 7; i++) {
+            checkCell()
+        }
+    }
+}
+function checkWinnerLeftDiagonal() {
+    for (i = 0, j = 3; i < 4; i++, j--) {
+        checkCell()
+    }
+    for (i = 0, j = 4; i < 5; i++, j--) {
+        checkCell()
+    }
+    for (i = 0, j = 5; i < 6; i++, j--) {
+        checkCell()
+    }
+    for (i = 1, j = 5; i < 7; i++, j--) {
+        checkCell()
+    }
+    for (i = 2, j = 5; i < 7; i++, j--) {
+        checkCell()
+    }
+    for (i = 3, j = 5; i < 7; i++, j--) {
+        checkCell()
+    }
+}
+function checkWinnerRightDiagonal() {
+    for (i = 6, j = 3; j > 0; i--, j--) {
+        checkCell()
+    }
+    for (i = 6, j = 4; j > 0; i--, j--) {
+        checkCell()
+    }
+    for (i = 6, j = 5; j > 0; i--, j--) {
+        checkCell()
+    }
+    for (i = 5, j = 5; j > 0; i--, j--) {
+        checkCell()
+    }
+    for (i = 4, j = 5; j > 0; i--, j--) {
+        checkCell()
+    }
+    for (i = 3, j = 5; j > 0; i--, j--) {
+        checkCell()
+    }
+}
+function checkCell() {
+    if (map[i][j] > 0) {
+        if (map[i][j] === 1) {
+            jogador1++
+            jogador2 = 0
+            if (jogador1 === 4) {
+                console.log("player 1 venceu");
+                popupVitoria(1);
+                jogador = 3
             }
         }
+        else {
+            jogador2++
+            jogador1 = 0
+            if (jogador2 === 4) {
+                console.log("player 2 venceu");
+                popupVitoria(2);
+                jogador = 3
+            }
+        }
+    }
+    else {
+        jogador1 = 0
+        jogador2 = 0
     }
 }
 
