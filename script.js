@@ -184,6 +184,11 @@ function checkWinnerRightDiagonal() {
     }
 }
 function checkCell() {
+    //Essa função vai checar cada célula selecionada pelo for, que fica dentro da função onde o checkcell foi chamado,
+    //se a célula for maior que 0, e for igual a 1, entrará na linha no if da linha 169,do contrário na 180,
+    //e aumentará o contador do determinado jogador em 1 e zerará o outro, caso o contador seja === 4, o determinado jogador vence,
+    // caso o primeiro if seja falso, zerará o contador dos dois jogadores
+    //  o motivo de ter criado essa função, é apenas de encurtar o código, do contrário teria de colocar em cada condição de vitória 
     if (map[i][j] > 0) {
         if (map[i][j] === 1) {
             jogador1++
