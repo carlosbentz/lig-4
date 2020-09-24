@@ -14,11 +14,13 @@ const gemSound = document.getElementById('gemSound')
 const columns = []
 const containersDiscos = []
 
-//
+
 let disco
 let jogador = 1
 let posicaoX
 let posicaoY
+
+let countDraw = 0
 
 let jogador1 = 0
 let jogador2 = 0
@@ -27,6 +29,8 @@ let placar = {
     player1: 0,
     player2: 0
 }
+
+let arrayCloudDisco = []
 
 //Array que é ultilizado para mapear a colocação das peças e as condições de vítoria  
 let map = [
@@ -40,7 +44,6 @@ let map = [
 ]
 
 //Função que cria divs de entrada de disco e insere no containerCloudDisco
-let arrayCloudDisco = []
 function createCloudDisco() {
     for (i = 0; i < 7; i++) {
         arrayCloudDisco[i] = document.createElement('div')
@@ -87,6 +90,7 @@ function insertDisco() {
                 checkWinnerVertically()
                 checkWinnerLeftDiagonal()
                 checkWinnerRightDiagonal()
+                checkDraw()
             }
         })
     })
@@ -111,6 +115,7 @@ function escreveMap(coluna) {
                     elem.classList.remove('preto')
                     elem.classList.add('vermelho')
                 })
+                countDraw++
                 break;
             case 2:
                 map[coluna][index] += 2
@@ -123,6 +128,7 @@ function escreveMap(coluna) {
                     elem.classList.remove('vermelho')
                     elem.classList.add('preto')
                 })
+                countDraw++
                 break;
             default:
                 break;
@@ -170,6 +176,7 @@ function checkWinnerLeftDiagonal() {
         checkCell()
     }
     zerarPontos()
+    //zerarPontos() foi criada pra simplificar as funções diagonais, que já estavam meio difíceis de ler
     for (i = 0, j = 4; i < 5; i++, j--) {
         checkCell()
     }
@@ -233,9 +240,8 @@ function checkCell() {
             jogador1++
             jogador2 = 0
             if (jogador1 === 4) {
-                console.log("player 1 venceu");
-                console.log(jogador1)
-                popupVitoria(1);
+                popupVitoria("Jogador 1 venceu");
+                countDraw = 0
                 placar["player1"] += 1
                 document.getElementById('placar1').innerHTML = placar.player1
                 jogador = 3
@@ -245,9 +251,8 @@ function checkCell() {
             jogador2++
             jogador1 = 0
             if (jogador2 === 4) {
-                console.log("player 2 venceu");
-                console.log(jogador2)
-                popupVitoria(2);
+                popupVitoria("Jogador 2 venceu");
+                countDraw = 0
                 placar["player2"] += 1
                 document.getElementById('placar2').innerHTML = placar.player2
                 jogador = 3
@@ -259,19 +264,25 @@ function checkCell() {
         jogador2 = 0
     }
 }
-
+//Criada pra simplificar a função checkRight e left Diagonal
 function zerarPontos() {
     jogador1 = 0
     jogador2 = 0
 }
 
 
-
+//Define se houve empate, caso todos os espaços forem diferentes de 0, ou seja, se foram ocupados..
+function checkDraw() {
+    if (countDraw === 42) {
+        popupVitoria("Empate")
+        countDraw = 0
+    }
+}
 
 
 // Função que mostra tela de vitória
-function popupVitoria(player) {
-    document.getElementById('mensagemDeVitoria').innerText = `jogador ${player} Venceu!`
+function popupVitoria(mensagem) {
+    document.getElementById('mensagemDeVitoria').innerText = mensagem
     document.getElementById('popup').style.display = 'block'
 
 
