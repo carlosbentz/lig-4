@@ -15,7 +15,7 @@
     <div id="game">
 
         <div id="placarPlayer1" class="placar">
-            <p class="name">jogador 1</p>
+            <span class="name">jogador 1: </span>
             <span id="placar1" class="numplacar">0</span>
         </div>
         <div id="game-board-container">
@@ -25,7 +25,7 @@
             </div>
         </div>
         <div id="placarPlayer2" class="placar">
-            <p class="name">jogador 2</p>
+            <span class="name">jogador 2: </span>
             <span id="placar2" class="numplacar">0</span>
         </div>
     </div>
@@ -36,9 +36,9 @@
         <button onclick="reset()" id="reset"> Reiniciar</button>
     </div>
     <div id="inicialDisplay">
-
+        <h1 id="titulo">Lig - 4 <br>Pirata</h1>
         <div class="popup1" id="popup-1">
-            <div class="overlay"></div>
+            <div class="overlay"></div> == $0
             <div class="content">
                 <div class="close-btn" onclick="togglePopup()">&times;</div>
                 <h1>
@@ -60,7 +60,7 @@
     </div>
     <button id="mute"
         onclick="document.getElementById('player').muted = !document.getElementById('player').muted">Mute</button>
-    <audio id="player" src="assets/Pirates-of-the-Caribbean-Hes-a-P.mp3" autoplay loop></audio>
+    <audio id="player" src="assets/Pirates-of-the-Caribbean-Hes-a-P.mp3" autoplay loop preload="auto"></audio>
     <audio src="assets/gem.mp3" id="gemSound"></audio>
     <script  src="./script.js"></script>
 </body>
