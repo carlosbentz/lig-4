@@ -1,3 +1,7 @@
+if(navigator.userAgent.match(/Android/i)){
+    window.scrollTo(0,1);
+ }
+
 const boardColumnsContainer = document.querySelector('#board-columns-container')
 const containerCloudDisco = document.querySelector('#cloud-disco-container')
 const columns = []
