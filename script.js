@@ -6,6 +6,8 @@ const gemSound = document.getElementById('gemSound')
 let jogador = 1
 let posicaoX
 let posicaoY
+let jogador1 = 0
+let jogador2 = 0
 let placar = {
     player1: 0,
     player2: 0
@@ -168,6 +170,7 @@ function checkCell() {
             jogador2 = 0
             if (jogador1 === 4) {
                 console.log("player 1 venceu");
+                console.log(jogador1)
                 popupVitoria(1);
                 placar["player1"] += 1
                 document.getElementById('placar1').innerHTML= placar.player1
@@ -179,6 +182,7 @@ function checkCell() {
             jogador1 = 0
             if (jogador2 === 4) {
                 console.log("player 2 venceu");
+                console.log(jogador2)
                 popupVitoria(2);
                 placar["player2"] += 1
                 document.getElementById('placar2').innerHTML= placar.player2
@@ -219,7 +223,7 @@ function reset() {
         }
     });
     document.getElementById('popup').style.display = 'none'
-    jogador = 1
+    jogador = 2
     jogador1 = 0
     jogador2 = 0
 }
