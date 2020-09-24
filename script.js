@@ -1,3 +1,9 @@
+// Full screen para android
+if (navigator.userAgent.match(/Android/i)) {
+    window.scrollTo(0, 1);
+}
+
+
 // Seleção dos elementos #board-columns-container' #cloud-disco-container e #gemSound  para manipulação via Dom
 const boardColumnsContainer = document.querySelector('#board-columns-container')
 const containerCloudDisco = document.querySelector('#cloud-disco-container')
@@ -6,6 +12,8 @@ const gemSound = document.getElementById('gemSound')
 //Declaração de variáveis serem ultilizadas
 const columns = []
 const containersDiscos = []
+
+//
 let disco
 let jogador = 1
 let posicaoX
@@ -64,7 +72,8 @@ function createLine() {
 }
 createLine()
 
-//Função que insere disco 
+
+//Função que insere disco na coluna
 function insertDisco() {
     arrayCloudDisco.forEach((elem) => {
         elem.addEventListener('click', (event) => {
@@ -79,9 +88,10 @@ function insertDisco() {
         })
     })
 }
-insertDisco()
+insertDisco()      
 
-// Função que insere a posição do disco no array e de troca o jogador 
+
+// Função que insere a posição do disco no array Map e de troca o jogador 
 function escreveMap(coluna) {
     posicaoX = document.getElementById(coluna)
     index = map[coluna].lastIndexOf(0)
@@ -119,6 +129,7 @@ function escreveMap(coluna) {
 
 
 
+//Condição simples, vai selecionando horizontalmente as células, e o checkCell() vai analisando cada uma
 function checkWinnerHorizontally() {
     for (i = 0; i < 7; i++) {
         for (j = 0; j < 7; j++) {
@@ -128,6 +139,7 @@ function checkWinnerHorizontally() {
 }
 
 
+//Condição simples, vai selecionando verticalmente as células, e o checkCell() vai analisando cada uma
 function checkWinnerVertically() {
     for (j = 0; j < 7; j++) {
         for (i = 0; i < 7; i++) {
@@ -137,7 +149,20 @@ function checkWinnerVertically() {
 }
 
 
+//Aqui eu não consegui encontrar outra meneira de fazer, provavelmente tem uma solução muito mais simples, existe um padrão nas diagonais
+//mas eu acabei fazendo a mão no teste de mesa
+//cada for representa uma diagonal, exemplo :
+// O O O O X
+// O O O X O
+// O O X O O 
+// O X O O O 
+// X O O O O
+//Cada for é como se fosse essa sequência de X
+// No For, I = Coluna, J = Linha, I+J = Célula
+//Ambas as diagonais foram feitas da mesma maneira, apenas invertendo os lados.
+//Nota-se que aqui contém apenas as sequências, a função checkCell que determina os pontos e se o jogador venceu
 function checkWinnerLeftDiagonal() {
+
     for (i = 0, j = 3; i < 4; i++, j--) {
         checkCell()
     }
@@ -181,6 +206,11 @@ function checkWinnerRightDiagonal() {
 }
 
 
+//Essa função vai checar cada célula selecionada pelo for, que fica dentro da função onde o checkcell foi chamado,
+//se a célula for maior que 0, e for igual a 1, entrará na linha no if da linha 169,do contrário na 180,
+//e aumentará o contador do determinado jogador em 1 e zerará o outro, caso o contador seja === 4, o determinado jogador vence,
+// caso o primeiro if seja falso, zerará o contador dos dois jogadores
+//  o motivo de ter criado essa função, é apenas de encurtar o código, do contrário teria de colocar em cada condição de vitória 
 function checkCell() {
     if (map[i][j] > 0) {
         if (map[i][j] === 1) {
@@ -191,7 +221,7 @@ function checkCell() {
                 console.log(jogador1)
                 popupVitoria(1);
                 placar["player1"] += 1
-                document.getElementById('placar1').innerHTML= placar.player1
+                document.getElementById('placar1').innerHTML = placar.player1
                 jogador = 3
             }
         }
@@ -203,7 +233,7 @@ function checkCell() {
                 console.log(jogador2)
                 popupVitoria(2);
                 placar["player2"] += 1
-                document.getElementById('placar2').innerHTML= placar.player2
+                document.getElementById('placar2').innerHTML = placar.player2
                 jogador = 3
             }
         }
@@ -218,10 +248,9 @@ function checkCell() {
 function popupVitoria(player) {
     document.getElementById('mensagemDeVitoria').innerText = `jogador ${player} Venceu!`
     document.getElementById('popup').style.display = 'block'
-    
+
 
 }
-
 
 //Função que reinicia a partida
 function reset() {
