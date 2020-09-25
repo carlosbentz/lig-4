@@ -170,6 +170,7 @@ function checkWinnerVertically() {
 // No For, I = Coluna, J = Linha, I+J = Célula
 //Ambas as diagonais foram feitas da mesma maneira, apenas invertendo os lados.
 //Nota-se que aqui contém apenas as sequências, a função checkCell que determina os pontos e se o jogador venceu
+
 function checkWinnerLeftDiagonal() {
 
     for (i = 0, j = 3; i < 4; i++, j--) {
@@ -236,10 +237,14 @@ function checkWinnerRightDiagonal() {
 //  o motivo de ter criado essa função, é apenas de encurtar o código, do contrário teria de colocar em cada condição de vitória 
 function checkCell() {
     if (map[i][j] > 0) {
+
         if (map[i][j] === 1) {
+
             jogador1++
             jogador2 = 0
+
             if (jogador1 === 4) {
+
                 popupVitoria("Jogador 1 venceu");
                 countDraw = 0
                 placar["player1"] += 1
@@ -248,9 +253,12 @@ function checkCell() {
             }
         }
         else {
+
             jogador2++
             jogador1 = 0
+
             if (jogador2 === 4) {
+
                 popupVitoria("Jogador 2 venceu");
                 countDraw = 0
                 placar["player2"] += 1

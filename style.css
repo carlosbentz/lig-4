@@ -223,7 +223,7 @@ p{
     left: 50%;
     transform: translate(-50%, -50%) scale(0);
     background-image: url(assets/madeiraclara2.jpeg);
-    width: 100%;
+    width: 50%;
     height: 250px;
     z-index: 2;
     text-align: center;
